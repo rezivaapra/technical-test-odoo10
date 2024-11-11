@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_booking_order_reziva_05042001_service_team,booking_order_reziva_05042001.service_team,model_booking_order_reziva_05042001_service_team,,1,1,1,1
+access_booking_order_reziva_05042001_work_order,booking_order_reziva_05042001.work_order,model_booking_order_reziva_05042001_work_order,,1,1,1,1

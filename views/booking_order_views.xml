@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="booking_order_reziva_05042001_booking_order_form" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.booking_order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <group string="Booking Info">
+                    <field name="is_booking_order" />
+                    <field name="booking_start"/>
+                    <field name="booking_end"/>
+                    <field name="service_team_id"/>
+                    <field name="team_leader_id"/>
+                    <field name="team_member_ids" widget="many2many_tags"/>
+                </group>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="check_team_availability" string="Check" type="object" class="oe_highlight"/>
+                <button name="action_confirm_sale_order" string="Confirm Sale Order" type="object" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_booking_order_action" model="ir.actions.act_window">
+        <field name="name">Booking Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_booking_order', '=', True)]</field>
+        <field name="view_id" ref="sale.view_order_tree"/>
+    </record>
+</odoo>

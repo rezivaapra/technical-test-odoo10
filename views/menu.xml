@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        id="booking_menu"
+        name="Booking"
+        parent="sales_team.menu_sales"
+        sequence="14"
+        groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+    />
+
+    <menuitem 
+        id="booking_order_reziva_05042001_booking_order_manu_categ"
+        name="Booking Order"
+        parent="booking_menu"
+        action="booking_order_reziva_05042001_booking_order_action"
+        sequence="1"
+        groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+    />
+
+    <menuitem 
+        id="booking_order_reziva_05042001_work_order_menu_categ"
+        name="Work Order"
+        parent="booking_menu"
+        action="booking_order_reziva_05042001_work_order_action"
+        sequence="2"
+        groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+    />
+
+    <menuitem 
+        id="booking_order_reziva_05042001_service_team_menu_categ"
+        name="Service Team"
+        parent="booking_menu"
+        action="booking_order_reziva_05042001_service_team_action"
+        sequence="3"
+        groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"
+    />
+</odoo>

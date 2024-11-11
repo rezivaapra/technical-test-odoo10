@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_workorder">
+        <t t-call="report.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td colspan="4"><strong>Work Order Number:</strong> <span t-field="o.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Team Name</strong></td>
+                                        <td><span t-field="o.team_id.name"/></td>
+                                        <td><strong>Customer</strong></td>
+                                        <td><span t-field="o.sale_order_id.partner_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Booking Order Ref</strong></td>
+                                        <td><span t-field="o.sale_order_id.name"/></td>
+                                        <td><strong>Date</strong></td>
+                                        <td>
+                                            <span t-field="o.date_start"/> - <span t-field="o.date_end"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td><strong>NOTES:</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 100px;">
+                                            <span t-field="o.notes"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="row" style="margin-top: 50px;">
+                            <div class="col-xs-12">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td><strong>Signature:</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="height: 60px;">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+    <report
+        id="action_report_workorder"
+        string="Work Order"
+        model="booking_order_reziva_05042001.work_order"
+        report_type="qweb-pdf"
+        name="booking_order_reziva_05042001.report_workorder"
+        file="booking_order_reziva_05042001.report_workorder"
+    />
+</odoo>

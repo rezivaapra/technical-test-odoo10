@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="booking_order_reziva_05042001_work_order_tree" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.work_order.tree</field>
+        <field name="model">booking_order_reziva_05042001.work_order</field>
+        <field name="arch" type="xml">
+            <tree string="Work Order">
+                <field name="name"/>
+                <field name="sale_order_id"/>
+                <field name="team_id"/>
+                <field name="team_leader_id"/>
+                <field name="state"/>
+                <field name="planned_start"/>
+                <field name="planned_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_work_order_form" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.work_order.form</field>
+        <field name="model">booking_order_reziva_05042001.work_order</field>
+        <field name="arch" type="xml">
+            <form string="Work Order">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="sale_order_id" readonly="1"/>
+                        <field name="team_id" required="1"/>
+                        <field name="team_leader_id" required="1"/>
+                        <field name="team_member_ids" widget="many2many_tags"/>
+                        <field name="planned_start" required="1"/>
+                        <field name="planned_end" required="1"/>
+                        <field name="date_start" readonly="1"/>
+                        <field name="date_end" readonly="1"/>
+                        <field name="state" readonly="1"/>
+                        <field name="notes"/>
+                    </group>
+                    <footer>
+                        <button name="action_start_work" type="object" string="Start Work" states="pending" class="oe_highlight"/>
+                        <button name="action_end_work" type="object" string="End Work" states="in_progress" class="oe_highlight"/>
+                        <button name="action_reset" type="object" string="Reset" states="in_progress" class="oe_highlight"/>
+                        <button name="action_cancel" type="object" string="Cancel" states="draft,in_progress,done" class="oe_highlight"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="booking_order_reziva_05042001_work_order_kanban" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.work_order.kanban</field>
+        <field name="model">booking_order_reziva_05042001.work_order</field>
+        <field name="arch" type="xml">
+            <kanban string="Work Order">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="team_id"/>
+                <field name="planned_start"/>
+                <field name="planned_end"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_details">
+                            <strong><field name="name"/></strong>
+                            <div>
+                                <field name="state"/>
+                                <field name="team_id"/>
+                                <field name="planned_start"/>
+                                <field name="planned_end"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_work_order_calendar" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.work_order.calendar</field>
+        <field name="model">booking_order_reziva_05042001.work_order</field>
+        <field name="arch" type="xml">
+            <calendar string="Work Order" date_start="planned_start" date_end="planned_end">
+                <field name="name"/>
+                <field name="team_id"/>
+                <field name="state"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_work_order_pivot" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.work_order.pivot</field>
+        <field name="model">booking_order_reziva_05042001.work_order</field>
+        <field name="arch" type="xml">
+            <pivot string="Work Order">
+                <field name="team_id"/>
+                <field name="state"/>
+                <field name="planned_start"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_work_order_graph" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.work_order.graph</field>
+        <field name="model">booking_order_reziva_05042001.work_order</field>
+        <field name="arch" type="xml">
+            <graph string="Work Order" type="bar">
+                <field name="team_id" filter="true"/>
+                <field name="state" filter="true"/>
+                <field name="planned_start" interval="month"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_work_order_action" model="ir.actions.act_window">
+        <field name="name">Work Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">booking_order_reziva_05042001.work_order</field>
+        <field name="view_mode">tree,form,kanban,calendar,pivot,graph</field>
+        <field name="view_id" ref="booking_order_reziva_05042001_work_order_tree"/>
+    </record>
+
+    <record id="action_booking_order_reziva_05042001_work_order_kanban" model="ir.actions.act_window">
+        <field name="name">Work Orders Kanban</field>
+        <field name="res_model">booking_order_reziva_05042001.work_order</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="booking_order_reziva_05042001_work_order_kanban"/>
+    </record>
+
+    <record id="action_booking_order_reziva_05042001_work_order_calendar" model="ir.actions.act_window">
+        <field name="name">Work Orders Calendar</field>
+        <field name="res_model">booking_order_reziva_05042001.work_order</field>
+        <field name="view_mode">calendar</field>
+        <field name="view_id" ref="booking_order_reziva_05042001_work_order_calendar"/>
+    </record>
+
+    <record id="action_booking_order_reziva_05042001_work_order_pivot" model="ir.actions.act_window">
+        <field name="name">Work Orders Pivot</field>
+        <field name="res_model">booking_order_reziva_05042001.work_order</field>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="booking_order_reziva_05042001_work_order_pivot"/>
+    </record>
+
+    <record id="action_booking_order_reziva_05042001_work_order_graph" model="ir.actions.act_window">
+        <field name="name">Work Orders Graph</field>
+        <field name="res_model">booking_order_reziva_05042001.work_order</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="booking_order_reziva_05042001_work_order_graph"/>
+    </record>
+</odoo>

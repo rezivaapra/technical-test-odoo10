@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="booking_order_reziva_05042001_service_team_tree" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.service_team.tree</field>
+        <field name="model">booking_order_reziva_05042001.service_team</field>
+        <field name="arch" type="xml">
+            <tree string="Service Team">
+                <field name="name" />
+                <field name="team_leader_id" />
+                <field name="team_member_ids" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_service_team_form" model="ir.ui.view">
+        <field name="name">booking_order_reziva_05042001.service_team.form</field>
+        <field name="model">booking_order_reziva_05042001.service_team</field>
+        <field name="arch" type="xml">
+            <form string="Service Team">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="team_leader_id" />
+                        <field name="team_member_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="booking_order_reziva_05042001_service_team_action" model="ir.actions.act_window">
+        <field name="name">Service Team</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">booking_order_reziva_05042001.service_team</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
